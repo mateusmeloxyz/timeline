@@ -27462,9 +27462,6 @@ const Timeline = ({ items })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "timeline-scroll-container",
-                style: {
-                    overflowX: "auto"
-                },
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timelineHeaderDefault.default), {
                         dateRange: dateRange,
@@ -27572,7 +27569,29 @@ const TimelineItem = ({ item, dateRange, dayWidth })=>{
     const itemDuration = (0, _utils.getDaysBetween)(item.start, item.end) + 1; // +1 to include end date
     const left = daysFromStart * dayWidth;
     const width = itemDuration * dayWidth;
-    const handleDoubleClick = ()=>{
+    // Generate color based on item ID
+    const getColorById = (id)=>{
+        const colors = [
+            "#3498db",
+            "#e74c3c",
+            "#2ecc71",
+            "#f39c12",
+            "#9b59b6",
+            "#1abc9c",
+            "#e67e22",
+            "#34495e",
+            "#f1c40f",
+            "#e91e63",
+            "#8e44ad",
+            "#16a085",
+            "#27ae60",
+            "#f39800",
+            "#c0392b"
+        ];
+        return colors[id % colors.length];
+    };
+    const backgroundColor = getColorById(item.id);
+    const handleClick = ()=>{
         setIsEditing(true);
     };
     const handleNameChange = (e)=>{
@@ -27587,43 +27606,29 @@ const TimelineItem = ({ item, dateRange, dayWidth })=>{
         style: {
             left: `${left}px`,
             width: `${width}px`,
-            position: "absolute",
-            backgroundColor: "#3498db",
-            borderRadius: "4px",
-            padding: "4px 8px",
-            color: "white",
-            cursor: "pointer",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap"
+            backgroundColor: backgroundColor
         },
-        onDoubleClick: handleDoubleClick,
+        onClick: handleClick,
         children: isEditing ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
             type: "text",
             value: itemName,
             onChange: handleNameChange,
             onBlur: handleNameBlur,
-            autoFocus: true,
-            style: {
-                width: "90%",
-                border: "none",
-                background: "transparent",
-                color: "white"
-            }
+            autoFocus: true
         }, void 0, false, {
             fileName: "src/components/TimelineItem.js",
-            lineNumber: 48,
+            lineNumber: 64,
             columnNumber: 9
         }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             children: itemName
         }, void 0, false, {
             fileName: "src/components/TimelineItem.js",
-            lineNumber: 62,
+            lineNumber: 72,
             columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/TimelineItem.js",
-        lineNumber: 30,
+        lineNumber: 54,
         columnNumber: 5
     }, undefined);
 };
@@ -27708,35 +27713,22 @@ const TimelineHeader = ({ dateRange, dayWidth })=>{
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "timeline-header",
-        style: {
-            position: "sticky",
-            top: 0,
-            backgroundColor: "#f8f9fa",
-            zIndex: 1
-        },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "timeline-months",
-            style: {
-                height: "30px",
-                position: "relative"
-            },
             children: months.map((month, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "timeline-month-marker",
                     style: {
-                        position: "absolute",
-                        left: `${month.position}px`,
-                        borderLeft: "1px solid #ddd",
-                        height: "100%",
-                        paddingLeft: "4px"
+                        left: `${month.position}px`
                     },
                     children: (0, _utils.formatDate)(month.date, "MMM YYYY")
                 }, index, false, {
                     fileName: "src/components/TimelineHeader.js",
-                    lineNumber: 45,
+                    lineNumber: 34,
                     columnNumber: 11
                 }, undefined))
         }, void 0, false, {
             fileName: "src/components/TimelineHeader.js",
-            lineNumber: 40,
+            lineNumber: 32,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {

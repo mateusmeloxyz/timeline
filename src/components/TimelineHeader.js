@@ -28,28 +28,14 @@ const TimelineHeader = ({ dateRange, dayWidth }) => {
   }
 
   return (
-    <div
-      className="timeline-header"
-      style={{
-        position: "sticky",
-        top: 0,
-        backgroundColor: "#f8f9fa",
-        zIndex: 1,
-      }}
-    >
-      <div
-        className="timeline-months"
-        style={{ height: "30px", position: "relative" }}
-      >
+    <div className="timeline-header">
+      <div className="timeline-months">
         {months.map((month, index) => (
           <div
             key={index}
+            className="timeline-month-marker"
             style={{
-              position: "absolute",
               left: `${month.position}px`,
-              borderLeft: "1px solid #ddd",
-              height: "100%",
-              paddingLeft: "4px",
             }}
           >
             {formatDate(month.date, "MMM YYYY")}

@@ -1,5 +1,5 @@
 * {
-    outline: 2px dotted limegreen;
+    /* outline: 2px dotted limegreen;*/
 }
 
 body {
@@ -36,6 +36,7 @@ body {
 .timeline-scroll-container {
     border: 1px solid #ddd;
     border-radius: 4px;
+    overflow-x: auto;
 }
 
 .timeline-lanes {
@@ -43,13 +44,13 @@ body {
 }
 
 .timeline-lane {
-    height: 40px;
+    height: 80px;
     position: relative;
     border-bottom: 1px solid #f0f0f0;
 }
 
 .timeline-item {
-    height: 30px;
+    height: 80%;
     box-shadow:
         0 1px 3px rgba(0, 0, 0, 0.12),
         0 1px 2px rgba(0, 0, 0, 0.24);
@@ -57,9 +58,49 @@ body {
     z-index: 1;
 }
 
+.timeline-item {
+    position: absolute;
+    border-radius: 4px;
+    padding: 4px 8px;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .timeline-item:hover {
     box-shadow:
         0 3px 6px rgba(0, 0, 0, 0.16),
         0 3px 6px rgba(0, 0, 0, 0.23);
     z-index: 2;
+}
+
+.timeline-item input {
+    width: 90%;
+    border: none;
+    background: transparent;
+    color: white;
+    outline: none;
+}
+
+.timeline-header {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+    z-index: 1;
+}
+
+.timeline-months {
+    height: 30px;
+    position: relative;
+}
+
+.timeline-month-marker {
+    position: absolute;
+    border-left: 1px solid #ddd;
+    height: 100%;
+    padding-left: 4px;
+    font-size: 12px;
+    color: #666;
 }

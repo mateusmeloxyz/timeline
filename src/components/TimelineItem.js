@@ -13,7 +13,31 @@ const TimelineItem = ({ item, dateRange, dayWidth }) => {
   const left = daysFromStart * dayWidth;
   const width = itemDuration * dayWidth;
 
-  const handleDoubleClick = () => {
+  // Generate color based on item ID
+  const getColorById = (id) => {
+    const colors = [
+      "#3498db",
+      "#e74c3c",
+      "#2ecc71",
+      "#f39c12",
+      "#9b59b6",
+      "#1abc9c",
+      "#e67e22",
+      "#34495e",
+      "#f1c40f",
+      "#e91e63",
+      "#8e44ad",
+      "#16a085",
+      "#27ae60",
+      "#f39800",
+      "#c0392b",
+    ];
+    return colors[id % colors.length];
+  };
+
+  const backgroundColor = getColorById(item.id);
+
+  const handleClick = () => {
     setIsEditing(true);
   };
 
@@ -32,17 +56,9 @@ const TimelineItem = ({ item, dateRange, dayWidth }) => {
       style={{
         left: `${left}px`,
         width: `${width}px`,
-        position: "absolute",
-        backgroundColor: "#3498db",
-        borderRadius: "4px",
-        padding: "4px 8px",
-        color: "white",
-        cursor: "pointer",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap",
+        backgroundColor: backgroundColor,
       }}
-      onDoubleClick={handleDoubleClick}
+      onClick={handleClick}
     >
       {isEditing ? (
         <input
@@ -51,12 +67,6 @@ const TimelineItem = ({ item, dateRange, dayWidth }) => {
           onChange={handleNameChange}
           onBlur={handleNameBlur}
           autoFocus
-          style={{
-            width: "90%",
-            border: "none",
-            background: "transparent",
-            color: "white",
-          }}
         />
       ) : (
         <div>{itemName}</div>

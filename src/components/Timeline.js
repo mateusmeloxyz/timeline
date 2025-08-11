@@ -35,7 +35,7 @@ const Timeline = ({ items }) => {
         <button onClick={handleZoomIn}>Zoom In</button>
       </div>
 
-      <div className="timeline-scroll-container" style={{ overflowX: "auto" }}>
+      <div className="timeline-scroll-container">
         <TimelineHeader dateRange={dateRange} dayWidth={dayWidth} />
 
         <div className="timeline-lanes" style={{ width: `${timelineWidth}px` }}>
