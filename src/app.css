@@ -1,5 +1,65 @@
+* {
+    outline: 2px dotted limegreen;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+        Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.timeline-container {
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.timeline-controls {
+    margin-bottom: 10px;
+}
+
+.timeline-controls button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.timeline-controls button:hover {
+    background-color: #e0e0e0;
+}
+
+.timeline-scroll-container {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.timeline-lanes {
+    position: relative;
+}
+
+.timeline-lane {
+    height: 40px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.timeline-item {
+    height: 30px;
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+.timeline-item:hover {
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23);
+    z-index: 2;
 }
